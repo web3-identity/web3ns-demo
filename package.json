@@ -1,0 +1,17 @@
+{
+  "name": "@conflux-dev/web3ns-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@web3identity/web3ns": "^0.2.2",
+    "ethers": "5.4",
+    "js-conflux-sdk": "^2.1.9"
+  }
+}
