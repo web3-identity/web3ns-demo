@@ -30,6 +30,7 @@ async function main() {
 
 main().catch(console.error);
 
+// this function demonstrates how to purchase a domain with CFX
 async function purchaseDomain() {
     // To Purchase a domain, you need to proceed with the following steps:
     // 0. check label status
@@ -51,20 +52,20 @@ async function purchaseDomain() {
     const commitment = await web3domain.Web3Controller.makeCommitment(labelToBuy, account.address, ONE_YEAR, labelhash(labelToBuy), publicResolverAddress, [], true, 0, ONE_YEAR);
     // console.log(commitment);
 
-    /* let receipt = await web3domain.Web3Controller.commit(commitment).sendTransaction({
+    let receipt = await web3domain.Web3Controller.commit(commitment).sendTransaction({
         from: account.address,
     }).executed();
     // outcomeStatus 0 is success, 1 is fail
-    console.log(receipt); */
+    console.log(receipt);
 
 
-    // wait for more than 5 minutes
+    // wait for more than 10 seconds
     let rentPrice = await web3domain.Web3Controller.rentPrice(labelToBuy, ONE_YEAR);
     const totalPrice = rentPrice[0] + rentPrice[1];
     console.log(totalPrice.toString());
     let receipt2 = await web3domain.Web3Controller.register(labelToBuy, account.address, ONE_YEAR, labelhash(labelToBuy), publicResolverAddress, [], true, 0, ONE_YEAR).sendTransaction({
         from: account.address,
-        value: totalPrice,
+        value: totalPrice,  // make sure the sender has enough CFX to pay for the domain
     }).executed();
     console.log(receipt2);
 
